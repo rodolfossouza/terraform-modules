@@ -4,7 +4,7 @@ variable "aks_vm_size" {
   default = ""
 }
 variable "aks_node_count" {
-  type = number
+  type = string
   description = "(optional) describe your variable"
   default = ""
 }
