@@ -1,114 +1,114 @@
 variable "aks_vm_size" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 variable "aks_node_count" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 variable "aks_dns_prefix" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 variable "acr_admin_enabled" {
-  type = bool
+  type        = bool
   description = "(optional) describe your variable"
-  default = false
+  default     = false
 }
 variable "acr_sku" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 
 variable "prefix" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 
 variable "resource_group_location" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 
 variable "node_subnet_id" {
-    type = string
-    description = "(optional) describe your variable"
-    default = ""
+  type        = string
+  description = "(optional) describe your variable"
+  default     = ""
 }
 variable "aks_networking" {
-    type = map(string)
-    description = "(optional) describe your variable"
-    default = {
-      "service_cidr" = ""
-      "dns_service_ip" = ""
-      "docker_bridge_cidr" = ""
+  type        = map(string)
+  description = "(optional) describe your variable"
+  default = {
+    "service_cidr"       = ""
+    "dns_service_ip"     = ""
+    "docker_bridge_cidr" = ""
 
-    }
+  }
 }
 
 variable "admin_username" {
-    type = string
-    description = "(optional) describe your variable"
-    default = ""
+  type        = string
+  description = "(optional) describe your variable"
+  default     = ""
 }
 variable "ssh_public_key" {
-  type = string
+  type    = string
   default = ""
 }
 variable "subscription_id" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 variable "tenant_id" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 
 
 
 # Variables for Virtual Network
 variable "virtual_network_name" {
-    type = string
-    description = "(optional) describe your variable"
-    default = ""
+  type        = string
+  description = "(optional) describe your variable"
+  default     = ""
 }
 
 variable "virtual_network_address_prefix" {
-    type = string
-    description = "(optional) describe your variable"
-    default = ""
+  type        = string
+  description = "(optional) describe your variable"
+  default     = ""
 }
 
 variable "subnets_prefix" {
-    type = map(string)
-    description = "(optional) describe your variable"
-    default = {
-      "" = ""
-    }
+  type        = map(string)
+  description = "(optional) describe your variable"
+  default = {
+    "" = ""
+  }
 }
 
 
 variable "resource_group_name" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 
 variable "subnet_internal_id" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 variable "subnet_public_id" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }

@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "3.41.0"
     }
     random = {
@@ -13,9 +13,9 @@ terraform {
 }
 
 provider "azurerm" {
-    features {}
-    subscription_id = var.subscription_id 
-    tenant_id = var.tenant_id
+  features {}
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   # Configuration options
 }
 
@@ -64,31 +64,31 @@ resource "azurerm_kubernetes_cluster" "rodnet-aks" {
   dns_prefix          = "${var.prefix}-k8s"
 
   default_node_pool {
-    name       = "default"
-    node_count = var.aks_node_count
-    vm_size    = var.aks_vm_size
+    name           = "default"
+    node_count     = var.aks_node_count
+    vm_size        = var.aks_vm_size
     vnet_subnet_id = azurerm_subnet.rodnet-aks-subnet-internal.id
   }
 
-    linux_profile {
-      admin_username = var.admin_username
+  linux_profile {
+    admin_username = var.admin_username
 
-      ssh_key {
-        key_data = file(var.ssh_public_key)
-      }
+    ssh_key {
+      key_data = file(var.ssh_public_key)
     }
+  }
 
   identity {
     type = "SystemAssigned"
   }
   network_profile {
-    network_plugin = "azure"
-    load_balancer_sku = "standard"
-    ip_versions = ["IPv4"]
-    outbound_type     = "loadBalancer"
-    service_cidr = var.aks_networking["service_cidr"] 
-    dns_service_ip = var.aks_networking["dns_service_ip"]
-    docker_bridge_cidr= var.aks_networking["docker_bridge_cidr"]
+    network_plugin     = "azure"
+    load_balancer_sku  = "standard"
+    ip_versions        = ["IPv4"]
+    outbound_type      = "loadBalancer"
+    service_cidr       = var.aks_networking["service_cidr"]
+    dns_service_ip     = var.aks_networking["dns_service_ip"]
+    docker_bridge_cidr = var.aks_networking["docker_bridge_cidr"]
   }
 }
 
@@ -97,14 +97,14 @@ resource "azurerm_kubernetes_cluster_node_pool" "rodnet-aks-front-prd-pool" {
   kubernetes_cluster_id = azurerm_kubernetes_cluster.rodnet-aks.id
   vm_size               = var.aks_vm_size
   node_count            = var.aks_node_count
-  vnet_subnet_id =  azurerm_subnet.rodnet-aks-subnet-public.id
+  vnet_subnet_id        = azurerm_subnet.rodnet-aks-subnet-public.id
   tags = {
     Environment = "Production"
   }
 
   node_labels = {
     Environment = "Prod"
-    Layer = "front"
+    Layer       = "front"
 
   }
 }
@@ -113,7 +113,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "rodnet-aks-back-prd-pool" {
   kubernetes_cluster_id = azurerm_kubernetes_cluster.rodnet-aks.id
   vm_size               = var.aks_vm_size
   node_count            = var.aks_node_count
-  vnet_subnet_id = azurerm_subnet.rodnet-aks-subnet-internal.id
+  vnet_subnet_id        = azurerm_subnet.rodnet-aks-subnet-internal.id
 
   tags = {
     Environment = "Production"
@@ -121,7 +121,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "rodnet-aks-back-prd-pool" {
 
   node_labels = {
     Environment = "Prod"
-    Layer = "back"
+    Layer       = "back"
 
   }
 }
