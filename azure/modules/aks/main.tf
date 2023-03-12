@@ -31,7 +31,7 @@ resource "azurerm_virtual_network" "rodnet-aks-vnet" {
   resource_group_name = azurerm_resource_group.rodnet-aks-rg.name
   address_space       = ["${var.virtual_network_address_prefix}"]
   #dns_servers         = ["10.0.0.4", "10.0.0.5"]
-  subnet = []
+
 }
 resource "azurerm_subnet" "rodnet-aks-subnet-internal" {
   name                 = "internal"
